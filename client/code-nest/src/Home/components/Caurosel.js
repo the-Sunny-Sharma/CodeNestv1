@@ -55,6 +55,7 @@ export default function Caurosel() {
           </div>
         </CCarouselItem>
         <CCarouselItem>
+          {/* changes to be done for 3rd slide */}
           <div className="d-block w-100 img-height">
             <div className="slide-2-text">
               <h5 className="caurosel-btext slide-2-btext">
