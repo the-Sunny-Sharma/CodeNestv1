@@ -1,0 +1,89 @@
+.navbar {
+  height: 90px;
+  background-color: #4361ee;
+  display: flex;
+  padding-left: 40px;
+  padding-right: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+}
+
+.nav-a {
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-a li {
+  list-style-type: none;
+}
+
+.nav-a li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-a li a:hover {
+  color: #1b275f;
+}
+
+.signup-btn {
+  color: #4361ee !important;
+  background-color: #fff;
+  padding: 10px;
+  height: 42px !important;
+  width: 164px !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+}
+
+.signup-btn:hover {
+  opacity: 0.5;
+}
+
+.search-bar {
+  margin-left: 50px;
+  height: 36px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.search-bar button {
+  height: 36px;
+  width: 50px;
+  border-radius: 50px;
+  border: none;
+  background-color: #1b275f;
+}
+
+.search-input {
+  height: 32px;
+  width: 250px;
+  border-radius: 0px 50px 50px 0px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+
+.active-link {
+  border-bottom: 3px solid #1b275f;
+  transition: border-bottom 0.5s ease-in-out;
+}
