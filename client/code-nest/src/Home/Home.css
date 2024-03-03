@@ -162,3 +162,63 @@
   background-color: #fff;
   margin-top: 250px;
 }
+
+.about-codenest {
+  padding: 80px;
+  margin-top: 80px;
+}
+
+.about-codenest h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+}
+
+.text-split-flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 50px;
+}
+
+.left-content,
+.right-content {
+  width: 500px;
+}
+
+.team {
+  padding: 100px;
+  border-radius: 20px;
+  min-height: 150px;
+}
+
+.team h3 {
+  text-align: center;
+  font-weight: 600px;
+  margin-bottom: 30px;
+}
+
+.team-container {
+  display: flex;
+  background-color: #4361ee;
+  justify-content: space-evenly;
+  border-radius: 30px;
+}
+
+.member {
+  padding: 50px;
+  color: #fff;
+}
+.member img {
+  /* object-fit: cover; */
+  border-radius: 50%;
+}
+
+.member p {
+  text-align: center;
+}
+
+.mem-name {
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
