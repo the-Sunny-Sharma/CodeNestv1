@@ -2,6 +2,11 @@
   margin-left: 700px;
   margin-top: 50px;
 }
+#caurosel {
+  background-color: #fff;
+  height: 700px;
+  z-index: -800;
+}
 
 .caurosel-btext {
   font-size: 2.5rem;
@@ -89,7 +94,7 @@
 }
 
 .courses-container {
-  margin-top: 80px;
+  /* margin-top: 80px; */
   padding: 80px;
 }
 
@@ -123,4 +128,37 @@
 
 .coursesmy-2 {
   margin-top: 80px;
+}
+
+/* CSS for playground */
+
+.parallax-Video {
+  height: 400px;
+  padding: 50px 0px;
+}
+
+.playground_vid {
+  width: 100%;
+  /* min-height: 100%; */
+  position: fixed;
+  top: 0;
+  z-index: -999;
+}
+
+.para-text {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+  width: 1000px;
+  text-align: center;
+  margin: auto;
+  margin-top: 180px;
+}
+
+/* css for about section */
+
+.about-container {
+  height: 1500px;
+  background-color: #fff;
+  margin-top: 250px;
 }
