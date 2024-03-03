@@ -80,3 +80,47 @@
   padding: 10px;
   margin-left: 250px;
 }
+
+/* CSS for Courses section */
+
+#courses {
+  height: 1250px;
+  background-color: #eaf0ff;
+}
+
+.courses-container {
+  margin-top: 80px;
+  padding: 80px;
+}
+
+.text-overflow-clamp {
+  width: 100%;
+  /* this code clamps based on specified lines */
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+}
+
+.courses-row-1 {
+  padding: 50px;
+  background-color: #4361ee;
+  border-radius: 10px;
+}
+
+.coursesmy-row {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  .cardmy {
+    flex: 0 0 auto;
+  }
+}
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+
+.coursesmy-2 {
+  margin-top: 80px;
+}

@@ -3,6 +3,7 @@ import { CCarousel, CCarouselItem } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import Image1 from "../../ASSETS/svgs/caurosel1.svg";
 import Image2 from "../../ASSETS/svgs/caurosel2.svg";
+import Image3 from "../../ASSETS/svgs/caurosel3.svg";
 
 export default function Caurosel() {
   return (
@@ -57,26 +58,25 @@ export default function Caurosel() {
         <CCarouselItem>
           {/* changes to be done for 3rd slide */}
           <div className="d-block w-100 img-height">
-            <div className="slide-2-text">
-              <h5 className="caurosel-btext slide-2-btext">
-                Empowering Student-Teacher Connections Through Online Learning{" "}
+            <div className="caurosel-text">
+              <h5 className="caurosel-btext slide-1-btext">
+                Learn Through Play: Engaging Education for Every Student{" "}
               </h5>
-              <p className="caurosel-ptext slide-2-ptext">
-                Bridge the student-teacher gap with our platform's live coding
-                collaboration. Students engage directly with teachers, sharing
-                screens and ideas in real-time sessions. Together, they
-                troubleshoot, explore, and master coding concepts, fostering
-                dynamic learning experiences that propel understanding and
-                innovation.
+              <p className="caurosel-ptext slide-1-ptext">
+                Experience the transformative journey of education with our
+                immersive gamified learning adventures. Empower students to
+                discover, engage, and excel as they embark on exciting quests
+                blending knowledge and fun. Join us in revolutionizing learning
+                through interactive play today!
               </p>
             </div>
             <img
-              src={Image2}
+              src={Image3}
               alt="CodeNest"
-              className="caurosel2"
-              style={{ width: "auto", height: "400px" }}
+              className="caurosel1"
+              style={{ width: "auto", height: "520px" }}
             />
-            <button className="slide-2-btn">Join Us Now!</button>
+            <button className="slide-1-btn">Get Started</button>
           </div>
         </CCarouselItem>
       </CCarousel>

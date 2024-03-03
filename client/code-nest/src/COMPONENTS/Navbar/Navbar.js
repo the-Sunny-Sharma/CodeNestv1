@@ -5,11 +5,22 @@ import { Link, useLocation } from "react-router-dom";
 export default function Navbar() {
   const location = useLocation();
 
+  // method to jump to the desired element by using the element's id
+  const jumpToRelevantDiv = (id) => {
+    const releventDiv = document.getElementById(id);
+    // behavior: "smooth" parameter for smooth movement
+    releventDiv.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <nav className="navbar-my">
         <div className="navbar-logo">
-          <Link className="logo" to="/">
+          <Link
+            className="logo"
+            to="/"
+            onClick={() => jumpToRelevantDiv("caurosel")}
+          >
             CodeNest
           </Link>
           <div className="search-bar">
@@ -48,16 +59,24 @@ export default function Navbar() {
         </div>
         <ul className="nav-a">
           <li>
-            <Link to="#">Explore Courses</Link>
+            <Link to="#" onClick={() => jumpToRelevantDiv("courses")}>
+              Explore Courses
+            </Link>
           </li>
           <li>
-            <Link to="#">PlayGround</Link>
+            <Link to="#" onClick={() => jumpToRelevantDiv("playground")}>
+              PlayGround
+            </Link>
           </li>
           <li>
-            <Link to="#">About Us</Link>
+            <Link to="#" onClick={() => jumpToRelevantDiv("about")}>
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="#">Contact Us</Link>
+            <Link to="#" onClick={() => jumpToRelevantDiv("contact")}>
+              Contact Us
+            </Link>
           </li>
           <li>
             <Link
