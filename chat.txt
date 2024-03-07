@@ -1,0 +1,4 @@
+1. bug found when navigating from login & signup page to home page.
+### Cause:
+  in navbar component there's a method to jump to the desired element by using the element's id.
+

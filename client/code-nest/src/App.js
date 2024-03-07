@@ -5,6 +5,7 @@ import SignUp from "./SignUp/SignUp";
 import Login from "./Login/Login";
 import Navbar from "./COMPONENTS/Navbar/Navbar";
 import Home from "./Home/Home";
+import ForgotPassword from "./Login/ForgotPassword";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </>
