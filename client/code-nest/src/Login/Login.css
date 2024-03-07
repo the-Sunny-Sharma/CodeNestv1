@@ -1,3 +1,27 @@
-.login-page-wrapper {
-  background-color: aqua;
+.log-wrapper {
+  padding-top: 100px;
+}
+
+.login-h {
+  margin-bottom: 50px;
+}
+
+.new-form-grp {
+  margin-bottom: 30px;
+}
+
+.down-tag span {
+  color: #4361ee;
+  cursor: pointer;
+}
+
+.down-tag {
+  margin-top: 20px;
+}
+
+.frgt-pass {
+  color: #4361ee;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
 }
