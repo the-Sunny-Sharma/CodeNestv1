@@ -19,14 +19,11 @@ The project's design was created using Figma, and you can view the design [here]
 - Node.js
 - Express.js
 - MongoDB
-- Mongoose
 
 ## Libraries used
 
 - @coreui/react
-- WebSocket
-- Nodemon
-- Codemirror
+- jQuery
 
 ## Getting Started
 
