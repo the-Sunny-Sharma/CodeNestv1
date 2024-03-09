@@ -2,3 +2,15 @@
 ### Cause:
   in navbar component there's a method to jump to the desired element by using the element's id.
 
+
+
+const crypto = require('crypto');
+
+// Generate a random JWT secret
+const generateJWTSecret = () => {
+  return crypto.randomBytes(64).toString('hex');
+};
+
+// Generate and log the JWT secret
+const jwtSecret = generateJWTSecret();
+console.log('JWT Secret:', jwtSecret);

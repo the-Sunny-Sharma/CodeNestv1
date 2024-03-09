@@ -8,11 +8,17 @@ config({
 
 const app = express();
 
+//Using middlewares
+app.use(express.json()); //Parse JSON bodies as text/html
+app.use(express.urlencoded({ extended: true })); //Parse URL-encoded data with the query
+
 //Importing and using routes
 
 import course from "./routes/courseRoutes.js";
+import user from "./routes/userRoutes.js";
 
 app.use("/api/v1/", course);
+app.use("/api/v1/", user);
 
 export default app;
 
