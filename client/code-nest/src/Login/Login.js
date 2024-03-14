@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import "./Login.css";
 import SmallInput from "./components/SmallInput";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const navigate = useNavigate();
+
   useEffect(() => {
     // jQuery code here
     $("input").focus(function () {
@@ -22,6 +24,54 @@ export default function Login() {
       }
     });
   }, []); // empty dependency array ensures this runs only once after mount
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const hEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const hPassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const proceedToLogin = async (event) => {
+    event.preventDefault();
+    if (!email || !password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    let loginCredentials = {
+      email,
+      password,
+    };
+    let url = "http://localhost:4000/api/v1/login";
+    try {
+      // const response = await axios.post(url, loginCredentials);
+      const response = await axios.post(url, loginCredentials, {
+        withCredentials: true, // Include credentials (cookies) in the request
+      });
+      if (response.data.success === true) {
+        console.log("Login data: ", response);
+        const email = response.data.user.email;
+        localStorage.setItem("email", email);
+        navigate("/h", { replace: true });
+        // navigate("/h");
+        return;
+      } else {
+        alert("Invalid Email or Password");
+        return;
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        alert("Invalid Email or Password");
+      } else {
+        alert("Server not responding");
+      }
+      return;
+    }
+  };
 
   const redirect = (route) => {
     navigate(route);
@@ -43,6 +93,8 @@ export default function Login() {
                 ID="email"
                 Type="email"
                 ClassName="full-length form-input"
+                Value={email}
+                OnChange={hEmail}
               />
             </div>
             <div className="form-group">
@@ -53,10 +105,13 @@ export default function Login() {
                 ID="password1"
                 Type="password"
                 ClassName="full-length form-input"
+                Value={password}
+                OnChange={hPassword}
               />
             </div>
-
-            <button className="sign-page-btn">Login</button>
+            <button className="sign-page-btn" onClick={proceedToLogin}>
+              Login
+            </button>
           </div>
         </div>
         <p className="signup-page-h down-tag">
