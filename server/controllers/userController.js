@@ -1,5 +1,6 @@
 import { catchAsyncError } from "../middlewares/catchAsyncError.js";
-import { User } from "../models/User.js";
+import { User, Teacher } from "../models/User.js";
+import { Course } from "../models/Course.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import { sendToken } from "../utils/sendToken.js";
 
@@ -131,4 +132,130 @@ export const resetPassword = catchAsyncError(async (req, res, next) => {
   //   success: true,
   //   message: "Profile Picture Updated Successfully!",
   // });
+});
+
+export const addToPlaylist = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  const course = await Course.findById(req.body.id);
+
+  if (!course) return next(new ErrorHandler("Invalid Course Id", 404));
+
+  const itemExist = user.playlist.find((item) => {
+    if (item.course.toString() === course._id.toString()) return true;
+  });
+
+  if (itemExist) return next(new ErrorHandler("Item Already Exist", 409));
+
+  user.playlist.push({
+    course: course._id,
+    poster: course.poster.url,
+  });
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Added to Playlist",
+  });
+});
+
+export const removeFromPlaylist = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  const course = await Course.findById(req.query.id);
+
+  if (!course) return next(new ErrorHandler("Invalid Course Id", 404));
+
+  const newPlaylist = user.playlist.filter((item) => {
+    if (item.course.toString() !== course._id.toString()) return item;
+  });
+
+  user.playlist = newPlaylist;
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Removed From Playlist",
+  });
+});
+
+export const registerTeacher = catchAsyncError(async (req, res, next) => {
+  const {
+    title,
+    qualifications,
+    summary,
+    yearsOfExperience,
+    subject,
+    specialization,
+    languages,
+  } = req.body;
+
+  if (
+    !title ||
+    !qualifications ||
+    !summary ||
+    !yearsOfExperience ||
+    !subject ||
+    !specialization ||
+    !languages
+  )
+    return next(new ErrorHandler("Please add all fields.", 400));
+
+  // Find the user by their ID
+  const user = await User.findById(req.user._id);
+
+  // Check if the user exists
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  // Check if the user is already registered as a teacher
+  if (user.isTeacher) {
+    return next(
+      new ErrorHandler("You are already registered as a teacher", 409)
+    );
+  }
+
+  // Update the user's isTeacher field to true
+  user.isTeacher = true;
+
+  // Save the updated user object
+  await user.save();
+
+  // Create a new Teacher document
+  await Teacher.create({
+    user: req.user._id, // Reference to the user document
+    title,
+    qualifications,
+    summary,
+    yearsOfExperience,
+    subject,
+    specialization,
+    languages,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Profile Updated Successfully!",
+  });
+});
+
+// Get Teacher Profile
+export const getTeacherProfile = catchAsyncError(async (req, res, next) => {
+  // Retrieve user ID from the authenticated request
+  const userId = req.user._id;
+
+  // Check if the user is registered as a teacher
+  const teacher = await Teacher.findOne({ user: userId }).populate("user");
+  if (!teacher) {
+    return next(new ErrorHandler("You are not registered as a teacher", 403));
+  }
+
+  // If the user is registered as a teacher, return the teacher profile
+  res.status(200).json({
+    success: true,
+    data: teacher,
+  });
 });

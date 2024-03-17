@@ -9,6 +9,10 @@ import {
   updateProfilePicture,
   forgotPassword,
   resetPassword,
+  addToPlaylist,
+  removeFromPlaylist,
+  registerTeacher,
+  getTeacherProfile,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 
@@ -44,6 +48,21 @@ router.route("/forgotpassword").post(forgotPassword);
 router.route("/resetpassword/:token").put(resetPassword);
 
 //AddtoPlaylist
+router.route("/addtoplaylist").post(isAuthenticated, addToPlaylist);
+
 //RemovefromPlaylist
+router.route("/removefromplaylist").delete(isAuthenticated, removeFromPlaylist);
+
+//Register as a Teacher: Route to allow users to register as teachers.
+router.route("/register-teacher").post(isAuthenticated, registerTeacher);
+
+//Get Teacher Profile: Route to retrieve the profile of a specific teacher.
+router.route("/teacher/me").get(isAuthenticated, getTeacherProfile);
+
+//Update Teacher Profile: Route to allow teachers to update their profile information.
+// router.route("/teacher/update").put(isAuthenticated, updateTeacherProfile);
+
+//List Courses Taught by Teacher: Route to list all courses taught by a specific teacher.
+// router.route("/teacher/:id/courses").get(listTeacherCourses);
 
 export default router;

@@ -7,6 +7,7 @@ import Navbar from "./COMPONENTS/Navbar/Navbar";
 import Home from "./Home/Home";
 import ForgotPassword from "./Login/ForgotPassword";
 import HomeLogged from "./HomeLogged/HomeLogged";
+import Register from "./Teacher/Register/Register";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+
+          {/* Teacher pages */}
+          <Route path="/tutoring/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </>

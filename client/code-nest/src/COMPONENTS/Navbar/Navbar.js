@@ -85,7 +85,7 @@ export default function Navbar() {
                 <Link to="#">Community</Link>
               </li>
               <li>
-                <Link to="#">Start Tutoring</Link>
+                <Link to="/tutoring/register">Start Tutoring</Link>
               </li>
               <li>
                 <Link to="#">My Learning</Link>
