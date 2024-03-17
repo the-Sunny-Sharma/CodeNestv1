@@ -37,9 +37,9 @@ const schema = new mongoose.Schema({
     enum: ["admin", "user"],
     default: "user",
   },
-  subscription: {
-    id: String,
-    status: String,
+  isTeacher: {
+    type: Boolean,
+    default: false,
   },
   avatar: {
     public_id: {
@@ -51,6 +51,15 @@ const schema = new mongoose.Schema({
       required: true,
     },
   },
+  enrolledCourses: [
+    {
+      course: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course",
+      },
+      poster: String,
+    },
+  ],
   playlist: [
     {
       course: {
@@ -87,3 +96,42 @@ schema.methods.comparePassword = async function (password) {
 };
 
 export const User = mongoose.model("User", schema);
+
+// Teacher Model
+const teacherSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  qualifications: {
+    type: String,
+    required: true,
+  },
+  summary: {
+    type: String,
+    required: true,
+  },
+  yearsOfExperience: {
+    type: Number,
+    required: true,
+  },
+  subject: {
+    type: String,
+    required: true,
+  },
+  specialization: {
+    type: String,
+    required: true,
+  },
+  languages: {
+    type: String,
+    default: "English",
+  },
+});
+
+export const Teacher = mongoose.model("Teacher", teacherSchema);
