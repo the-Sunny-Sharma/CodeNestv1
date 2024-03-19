@@ -30,7 +30,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter your password"],
     minLength: [6, "Password must be at least 6 characters"],
-    select: false,
+    select: false, //this  means that this field will not show up in the response  when we get data from db
   },
   role: {
     type: String,
@@ -92,7 +92,7 @@ schema.methods.getJWTToken = function () {
 schema.methods.comparePassword = async function (password) {
   // console.log(this.password);
   return await bcrypt.compare(password, this.password);
-  //password received from user, this.password is the password already in database(hashed)
+  //password => received from user, this.password is the password already in database(hashed)
 };
 
 export const User = mongoose.model("User", schema);
