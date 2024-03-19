@@ -6,6 +6,7 @@ import axios from "axios";
 export default function Navbar() {
   const location = useLocation();
   const [userName, setUserName] = useState("");
+  const [isTeacher, setIsTeacher] = useState(false);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -15,6 +16,7 @@ export default function Navbar() {
         });
         // console.log(response.data.user);
         setUserName(response.data.user.fName);
+        if (response.data.user.isTeacher === true) setIsTeacher(true);
       } catch (error) {
         console.log(`Error fetching user profile: ${error}`);
       }
@@ -84,9 +86,15 @@ export default function Navbar() {
               <li>
                 <Link to="#">Community</Link>
               </li>
-              <li>
-                <Link to="/tutoring/register">Start Tutoring</Link>
-              </li>
+              {isTeacher ? (
+                <li>
+                  <Link to="/tutoring/register">Manage Classroom</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/tutoring/register">Start Tutoring</Link>
+                </li>
+              )}
               <li>
                 <Link to="#">My Learning</Link>
               </li>

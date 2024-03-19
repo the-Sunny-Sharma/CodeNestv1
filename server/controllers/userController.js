@@ -259,3 +259,26 @@ export const getTeacherProfile = catchAsyncError(async (req, res, next) => {
     data: teacher,
   });
 });
+
+// Get Teacher Profile and List Courses
+export const listTeacherCourses = catchAsyncError(async (req, res, next) => {
+  // Retrieve user ID from the authenticated request
+  const userId = req.user._id;
+
+  // Find all courses created by the teacher
+  const courses = await Course.find({ creator: userId });
+
+  if (courses.length === 0) {
+    return res.status(200).json({
+      success: true,
+      message: "You have not created any courses yet.",
+      data: [],
+    });
+  }
+
+  // Return the array of courses created by the teacher
+  res.status(200).json({
+    success: true,
+    data: courses,
+  });
+});
