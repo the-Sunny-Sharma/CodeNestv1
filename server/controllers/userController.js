@@ -3,6 +3,8 @@ import { User, Teacher } from "../models/User.js";
 import { Course } from "../models/Course.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import { sendToken } from "../utils/sendToken.js";
+import { sendEmail } from "../utils/sendEmail.js";
+import crypto from "crypto";
 
 export const signup = catchAsyncError(async (req, res, next) => {
   const { fName, lName, dateOfBirth, phone, email, password } = req.body;
@@ -121,17 +123,70 @@ export const updateProfilePicture = catchAsyncError(async (req, res, next) => {
 });
 
 export const forgotPassword = catchAsyncError(async (req, res, next) => {
-  // res.status(200).json({
-  //   success: true,
-  //   message: "Profile Picture Updated Successfully!",
-  // });
+  const { email } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return next(
+      new ErrorHandler(
+        "Sorry, we couldn't find an account associated with that email address.",
+        400
+      )
+    );
+  }
+
+  const resetToken = await user.getResetToken();
+
+  await user.save();
+  const url = `${process.env.FRONTEND_URL}/resetpassword/${resetToken}`;
+
+  // Send token via email
+  const message = `Click on the following link to reset your password: ${url}. If you have not requested this, please ignore this email.`;
+  await sendEmail(user.email, "CodeNest Password Reset", message);
+
+  res.status(200).json({
+    success: true,
+    message: `A password reset link has been sent to ${user.email}. Please check your inbox.`,
+  });
 });
 
 export const resetPassword = catchAsyncError(async (req, res, next) => {
-  // res.status(200).json({
-  //   success: true,
-  //   message: "Profile Picture Updated Successfully!",
-  // });
+  const { token } = req.params;
+
+  // Hash the token to match with the stored hashed token in the database
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
+
+  // Find the user with the matching reset token and ensure it has not expired
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  // If no user is found or the token has expired, return an error
+  if (!user)
+    return next(
+      new ErrorHandler(
+        "Invalid or expired token. Please request a new password reset.",
+        401
+      )
+    );
+
+  user.password = req.body.password;
+
+  user.resetPasswordExpire = undefined;
+  user.resetPasswordToken = undefined;
+
+  await user.save();
+
+  // If everything is successful, return a success message
+  res.status(200).json({
+    success: true,
+    message: "Password reset token verified. You can now reset your password.",
+  });
 });
 
 export const addToPlaylist = catchAsyncError(async (req, res, next) => {
