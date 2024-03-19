@@ -16,14 +16,10 @@ The project's design was created using Figma, and you can view the design [here]
 - HTML
 - CSS
 - JavaScript
+- React JS
 - Node.js
 - Express.js
 - MongoDB
-
-## Libraries used
-
-- @coreui/react
-- jQuery
 
 ## Getting Started
 
