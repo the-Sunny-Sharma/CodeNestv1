@@ -40,7 +40,7 @@ export default function About() {
                 src="https://insertface.com/fb/883/funny-costume-fat-men-fancy-882724-fkqnu-fb.jpg"
                 alt="Member 1"
               />
-              <p className="mem-name">Brijesh Jha</p>
+              <p className="mem-name">Brijesh</p>
               <p>Full Stack Developer</p>
             </div>
             <div className="member">
@@ -50,7 +50,7 @@ export default function About() {
                 src="https://insertface.com/fb/883/cosplay-costume-fat-men-882527-5v8f2-fb.jpg"
                 alt="Member 2"
               />
-              <p className="mem-name">Kamlesh Toraskar</p>
+              <p className="mem-name">Kamlesh</p>
               <p>Full Stack Developer</p>
             </div>
             <div className="member">
@@ -60,7 +60,7 @@ export default function About() {
                 src="https://insertface.com/fb/1014/best-cosplay-fat-guys-face-1013971-4zpji-fb.jpg"
                 alt="Member 3"
               />
-              <p className="mem-name">Suresh Sharma</p>
+              <p className="mem-name">Suresh</p>
               <p>Full Stack Developer</p>
             </div>
             <div className="member">
@@ -70,7 +70,7 @@ export default function About() {
                 src="https://insertface.com/fb/1016/good-halloween-costume-big-1015736-qqc4u-fb.jpg"
                 alt="Member 4"
               />
-              <p className="mem-name">Mahesh Meher</p>
+              <p className="mem-name">Mahesh</p>
               <p>Full Stack Developer</p>
             </div>
           </div>

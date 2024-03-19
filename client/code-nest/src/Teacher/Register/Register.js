@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     qualifications: "",
@@ -45,6 +47,7 @@ export default function Register() {
 
         // Optionally, you can display a success message to the user
         alert("Teacher registration successful!");
+        navigate("/myTeaching");
       } else {
         // If the request was not successful, handle the error
         alert("Teacher registration failed. Please try again.");

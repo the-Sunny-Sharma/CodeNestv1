@@ -13,6 +13,7 @@ import {
   removeFromPlaylist,
   registerTeacher,
   getTeacherProfile,
+  listTeacherCourses,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 
@@ -63,6 +64,6 @@ router.route("/teacher/me").get(isAuthenticated, getTeacherProfile);
 // router.route("/teacher/update").put(isAuthenticated, updateTeacherProfile);
 
 //List Courses Taught by Teacher: Route to list all courses taught by a specific teacher.
-// router.route("/teacher/:id/courses").get(listTeacherCourses);
+router.route("/teacher/my-courses").get(isAuthenticated, listTeacherCourses);
 
 export default router;
