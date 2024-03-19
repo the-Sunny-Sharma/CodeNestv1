@@ -6,7 +6,5 @@ export const connectDB = async () => {
     console.log(`MongoDB connected with ${connection.host}`);
   } catch (error) {
     console.error("MongoDB connection error:", error);
-    // Handle error appropriately, e.g., throw an error, exit the application, etc.
-    // throw error; // Uncomment this line if you want to propagate the error further.
   }
 };
