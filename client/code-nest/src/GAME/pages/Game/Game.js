@@ -43,6 +43,15 @@ export default function Game(){
                 >
                 Settings
                 </motion.button>
+                <motion.button 
+                    className="game_btn"
+                    initial={{opacity:0 ,x:-5000}} 
+                    animate={{opacity:1, x:0}}
+                    transition={{ ease: "easeIn", duration: 1.2 , delay:0.5}}
+                    onClick={() => nav('/home')}
+                >
+                Back
+                </motion.button>
             </motion.div>
         </motion.div>
         </>
