@@ -17,15 +17,6 @@ export default function Game(){
         sound.play()
     }
 
-    // useEffect(()=>{
-    //         const game_music = new Howl({
-    //             src:[gameMusic],
-    //             autoplay:true,
-    //             loop:true,
-    //             volume:0.2
-    //         })
-    // },[])
-
     return(
         <>
         <motion.div 
@@ -54,9 +45,6 @@ export default function Game(){
                 </motion.button>
             </motion.div>
         </motion.div>
-        {/* <audio controls autoplay>
-          <source src={audio} type="audio/mpeg"/>
-        </audio> */}
         </>
     )
 }
