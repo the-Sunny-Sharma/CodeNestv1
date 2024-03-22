@@ -14,3 +14,5 @@ const generateJWTSecret = () => {
 // Generate and log the JWT secret
 const jwtSecret = generateJWTSecret();
 console.log('JWT Secret:', jwtSecret);
+
+okay karan start here
