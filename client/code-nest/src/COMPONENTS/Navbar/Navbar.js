@@ -88,7 +88,7 @@ export default function Navbar() {
               </li>
               {isTeacher ? (
                 <li>
-                  <Link to="/tutoring/register">Manage Classroom</Link>
+                  <Link to="/myTeaching">Manage Classroom</Link>
                 </li>
               ) : (
                 <li>
