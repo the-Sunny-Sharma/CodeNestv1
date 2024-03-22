@@ -20,7 +20,7 @@ import Animation from './GAME/pages/Animation/Animation';
 import Game from './GAME/pages/Game/Game';
 import {AnimatePresence} from 'framer-motion'
 import ShowNavbar from "./COMPONENTS/ShowNavbar/ShowNavbar";
-
+import Codechat from "./Codechat/Codechat";
 
 function App() {
   return (
@@ -41,6 +41,8 @@ function App() {
                 <Route path="/myTeaching" element={<CreateCourse />} />
                 <Route path="/myTeaching/createCourse" element={<CourseDetails />} />
                 <Route path="/view-course/:id" element={<CourseDetailsPage />} />
+                <Route path="/codechat" element={<Codechat />} />
+
                 {/* -------------------Game---------------------- */}
                 <Route path="/home" element={<HomePage/>}/>
                 <Route path="/course" element={<Course/>}/>
