@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/CoursePage.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CoursePage() {
   const { courseId } = useParams();
+  const navigate = useNavigate();
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
@@ -28,6 +30,11 @@ export default function CoursePage() {
     fetchCourse();
   }, [courseId]);
 
+  const handleJoin = async (roomCode) => {
+    let role = "Audience";
+    navigate(`/unity/${roomCode}/${role}`);
+  };
+
   return (
     <div className="course-page">
       {course && (
@@ -48,10 +55,26 @@ export default function CoursePage() {
                 <h4>{lecture.title}</h4>
                 <p>{lecture.description}</p>
                 <p>Schedule: {new Date(lecture.schedule).toLocaleString()}</p>
-                <video controls>
-                  <source src={lecture.videoUrl.url} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {lecture.type === "video" &&
+                  lecture.videoUrl &&
+                  lecture.videoUrl.url && (
+                    <video controls>
+                      <source src={lecture.videoUrl.url} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                {["liveStream", "oneOnOne"].includes(lecture.type) && (
+                  <div>
+                    <p>Room Code: {lecture.roomCode}</p>
+                    <button
+                      onClick={() => {
+                        handleJoin(lecture.roomCode);
+                      }}
+                    >
+                      Join Stream
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>

@@ -11,7 +11,8 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 // const API_KEY = "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";
-const API_KEY = "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";
+// const API_KEY = "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";
+const API_KEY = "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";
 const systemMessage = {
   role: "system",
   content:

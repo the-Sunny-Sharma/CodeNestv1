@@ -51,6 +51,17 @@ export default function Navbar() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/api/v1/logout", {
+        withCredentials: true, // Ensure cookies are sent with the request
+      });
+      console.log("user logged out", response.data);
+    } catch (error) {
+      console.log(`Error fetching user profile: ${error}`);
+    }
+  };
+
   return (
     <>
       <nav className="navbar-my">
@@ -250,15 +261,15 @@ export default function Navbar() {
               {show ? (
                 <div className="profile_dropdown">
                   <div className="profile_option">
-                    <a href="#" className="profile-link">
-                      <img src={User} width={45} height={45} />
+                    <Link className="profile-link">
+                      <img src={User} width={45} height={45} alt="user" />
                       <p>Profile</p>
-                    </a>
+                    </Link>
                     <hr />
-                    <a href="#" className="profile-link">
-                      <img src={logout} width={40} height={40} />
+                    <Link onClick={handleLogout} className="profile-link">
+                      <img src={logout} width={40} height={40} alt="logout" />
                       <p>Logout</p>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ) : null}

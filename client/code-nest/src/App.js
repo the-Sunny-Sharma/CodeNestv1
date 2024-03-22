@@ -10,7 +10,7 @@ import HomeLogged from "./HomeLogged/HomeLogged";
 import Register from "./Teacher/Register/Register";
 import CreateCourse from "./Teacher/Create Courses/CreateCourse";
 import CourseDetails from "./Teacher/Create Courses/CourseDetails";
-import CourseDetailsPage from "./Teacher/Create Courses/pages/CourseDetailsPage";
+// import CourseDetailsPage from "./Teacher/Create Courses/pages/CourseDetailsPage";
 // ---------------GAME--------------------
 import HomePage from "./GAME/pages/HomePage/HomePage";
 import Course from "./GAME/pages/Course/Course";
@@ -48,7 +48,7 @@ function App() {
               path="/myTeaching/createCourse"
               element={<CourseDetails />}
             />
-            <Route path="/view-course/:id" element={<CourseDetailsPage />} />
+            {/* <Route path="/view-course/:id" element={<CourseDetailsPage />} /> */}
             <Route path="/codechat" element={<Codechat />} />
             <Route path="/teacher/manage-courses" element={<ManageCourses />} />
 

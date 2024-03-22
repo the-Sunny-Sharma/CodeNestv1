@@ -4,8 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function CourseDetails() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [file, setFile] = useState(null);
+  const [teacherName, setTeacherName] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    category: "",
+    createdBy: "",
+    file: null,
+  });
 
   useEffect(() => {
     const fetchTeacherName = async () => {
@@ -18,10 +24,13 @@ export default function CourseDetails() {
         );
 
         if (response.data.success) {
-          const { fName, lName } = response.data.data.user;
-          const title = response.data.data.title;
+          const { fName, lName, title } = response.data.data.user;
           const teacherName = `${title} ${fName} ${lName}`;
-          setName(teacherName);
+          setTeacherName(teacherName);
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            createdBy: teacherName,
+          }));
         }
       } catch (error) {
         console.error("Error fetching teacher details:", error);
@@ -31,20 +40,13 @@ export default function CourseDetails() {
     fetchTeacherName();
   }, []);
 
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    category: "",
-    createdBy: "",
-  });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setFormData({ ...formData, file: e.target.files[0] });
   };
 
   const handleSubmit = async (e) => {
@@ -53,9 +55,10 @@ export default function CourseDetails() {
     formDataWithFile.append("title", formData.title);
     formDataWithFile.append("description", formData.description);
     formDataWithFile.append("category", formData.category);
-    formDataWithFile.append("createdBy", name);
-    formDataWithFile.append("file", file);
-    console.log(formDataWithFile);
+    formDataWithFile.append("createdBy", formData.createdBy);
+    formDataWithFile.append("file", formData.file);
+    console.log(formData.title);
+
     try {
       const response = await axios.post(
         "http://localhost:4000/api/v1/createCourse",
@@ -73,7 +76,7 @@ export default function CourseDetails() {
           title: "",
           description: "",
           category: "",
-          createdBy: "",
+          file: null,
         });
 
         alert("Course Created Successfully");
@@ -121,7 +124,12 @@ export default function CourseDetails() {
           />
         </label>
         <br />
-        <input type="text" name="createdBy" value={name} readOnly />
+        <input
+          type="text"
+          name="createdBy"
+          value={formData.createdBy}
+          readOnly
+        />
         <br />
         <label>
           Choose file:

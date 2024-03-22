@@ -24,17 +24,6 @@ export default function HomeLogged() {
     fetchUserProfile();
   }, [navigate]);
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get("http://localhost:4000/api/v1/logout", {
-        withCredentials: true, // Ensure cookies are sent with the request
-      });
-      console.log("user logged out", response.data);
-    } catch (error) {
-      console.log(`Error fetching user profile: ${error}`);
-    }
-  };
-
   return (
     <>
       {/* <h1>Welcome</h1>
@@ -49,7 +38,7 @@ export default function HomeLogged() {
       ) : (
         <p>Loading user profile...</p>
       )} */}
-      <Caurosel/>
+      <Caurosel />
     </>
   );
 }
