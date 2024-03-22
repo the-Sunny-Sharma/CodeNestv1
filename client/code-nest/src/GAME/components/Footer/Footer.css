@@ -1,0 +1,10 @@
+#footer{
+    background-color: brown;
+    height: 25px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+}

@@ -16,3 +16,5 @@ const jwtSecret = generateJWTSecret();
 console.log('JWT Secret:', jwtSecret);
 
 okay karan start here
+
+okay jidnesh and pranay starts here
