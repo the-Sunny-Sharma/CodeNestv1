@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import './Codechat.css';
+import "./Codechat.css";
 import {
   MainContainer,
   ChatContainer,
@@ -10,7 +10,6 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "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";
 const systemMessage = {
   role: "system",
   content:
@@ -64,7 +63,7 @@ function Codechat() {
         {
           method: "POST",
           headers: {
-            Authorization: "Bearer " + API_KEY,
+            // Authorization: "Bearer " + API_KEY,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(apiRequestBody),
@@ -93,13 +92,22 @@ function Codechat() {
   }
 
   return (
-    <div className="Codechat" style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"30px",paddingBottom:"50px"} }>
+    <div
+      className="Codechat"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: "30px",
+        paddingBottom: "50px",
+      }}
+    >
       <div style={{ position: "relative", height: "600px", width: "600px" }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
               scrollBehavior="smooth"
-              style={{marginTop:"10px"}}
+              style={{ marginTop: "10px" }}
               typingIndicator={
                 isTyping ? (
                   <TypingIndicator content="ChatGPT is typing" />
