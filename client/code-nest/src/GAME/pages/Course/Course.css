@@ -1,0 +1,55 @@
+#heading{
+    width: 70vw;
+    height: 15vh;
+    margin: auto;
+    margin-top: 300px;
+}
+
+#learnings{
+    width: 70vw;
+    height: 30vh;
+    background-color: #1d193f;
+    margin: auto;
+    margin-top: 70px;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 40px 0px 0px 40px ;
+    color: white;
+}
+
+#content{
+    width: 70vw;
+    height: 100vh;
+    margin: auto;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+#lesson{
+    width: 70vw;
+    height: 15vh;
+    background-color: #1d193f;
+    margin-top: 30px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px 0px 0px 15px ;
+}
+
+#heading2{
+    margin-top: 20px;
+}
+
+#start_btn{
+    margin-top: 50px;
+    width: 150px;
+    height: 30px;
+    color:white;
+    font-weight: 800;
+    background-color: #0063a1;
+    border: 3px solid black;
+    border-radius: 10px;
+  }
