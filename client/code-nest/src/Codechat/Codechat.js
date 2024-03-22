@@ -10,8 +10,6 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-// const API_KEY = "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";
-const API_KEY = "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";
 const systemMessage = {
   role: "system",
   content:
@@ -65,7 +63,7 @@ function Codechat() {
         {
           method: "POST",
           headers: {
-            Authorization: "Bearer " + API_KEY,
+            // Authorization: "Bearer " + API_KEY,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(apiRequestBody),

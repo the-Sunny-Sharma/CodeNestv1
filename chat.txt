@@ -18,3 +18,6 @@ console.log('JWT Secret:', jwtSecret);
 okay karan start here
 
 okay jidnesh and pranay starts here
+
+// const API_KEY = "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";
+const API_KEY = "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";
