@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function CourseDetails() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [file, setFile] = useState(null);
 
   useEffect(() => {
     const fetchTeacherName = async () => {
@@ -21,11 +22,6 @@ export default function CourseDetails() {
           const title = response.data.data.title;
           const teacherName = `${title} ${fName} ${lName}`;
           setName(teacherName);
-          // Update the formData state to include createdBy
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            createdBy: teacherName,
-          }));
         }
       } catch (error) {
         console.error("Error fetching teacher details:", error);
@@ -39,7 +35,7 @@ export default function CourseDetails() {
     title: "",
     description: "",
     category: "",
-    createdBy: "", // Add createdBy field to store the name of the teacher
+    createdBy: "",
   });
 
   const handleChange = (e) => {
@@ -47,15 +43,28 @@ export default function CourseDetails() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    const formDataWithFile = new FormData();
+    formDataWithFile.append("title", formData.title);
+    formDataWithFile.append("description", formData.description);
+    formDataWithFile.append("category", formData.category);
+    formDataWithFile.append("createdBy", name);
+    formDataWithFile.append("file", file);
+    console.log(formDataWithFile);
     try {
       const response = await axios.post(
         "http://localhost:4000/api/v1/createCourse",
-        formData,
+        formDataWithFile,
         {
           withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
@@ -112,12 +121,13 @@ export default function CourseDetails() {
           />
         </label>
         <br />
-        <input
-          type="text"
-          name="createdBy"
-          value={name} // Use value instead of defaultValue
-          readOnly // Make the field read-only to prevent user modification
-        />
+        <input type="text" name="createdBy" value={name} readOnly />
+        <br />
+        <label>
+          Choose file:
+          <input type="file" name="file" onChange={handleFileChange} />
+        </label>
+        <br />
         <button type="submit">Submit</button>
       </form>
     </div>
