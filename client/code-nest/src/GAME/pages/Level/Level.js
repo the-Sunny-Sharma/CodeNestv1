@@ -38,7 +38,7 @@ export default function Level(){
 
     return(
         <>
-        
+
         <motion.div className="game_background"
             initial={{x:-3000}}
             animate={{ x:[0,900,0]}}
@@ -115,6 +115,8 @@ export default function Level(){
                 <FaStar className="star" size={50}/>
                 <FaStar className="star" size={50}/>
             </div>
+            <button className="back-button" onClick={() => nav('/game')} >Back</button>
+
         </motion.div>
         </>
     )
