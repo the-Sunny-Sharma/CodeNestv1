@@ -12,18 +12,34 @@ export default function Navbar() {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get("http://localhost:4000/api/v1/me", {
-          withCredentials: true, // Ensure cookies are sent with the request
+          withCredentials: true,
         });
-        // console.log(response.data.user);
         setUserName(response.data.user.fName);
+        console.log("Updated userName:", response.data.user.fName); // Log the updated userName
         if (response.data.user.isTeacher === true) setIsTeacher(true);
       } catch (error) {
         console.log(`Error fetching user profile: ${error}`);
       }
     };
-
     fetchUserProfile();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchUserProfile = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:4000/api/v1/me", {
+  //         withCredentials: true, // Ensure cookies are sent with the request
+  //       });
+  //       // console.log(response.data.user);
+  //       setUserName(response.data.user.fName);
+  //       if (response.data.user.isTeacher === true) setIsTeacher(true);
+  //     } catch (error) {
+  //       console.log(`Error fetching user profile: ${error}`);
+  //     }
+  //   };
+
+  //   fetchUserProfile();
+  // }, [userName]);
 
   // method to jump to the desired element by using the element's id
   const jumpToRelevantDiv = (id) => {
@@ -84,11 +100,11 @@ export default function Navbar() {
                 <Link to="#">Courses</Link>
               </li>
               <li>
-                <Link to="#">Community</Link>
+                <Link to="/codechat">Ask AI</Link>
               </li>
               {isTeacher ? (
                 <li>
-                  <Link to="/myTeaching">Manage Classroom</Link>
+                  <Link to="/teacher/manage-courses">Manage Classroom</Link>
                 </li>
               ) : (
                 <li>

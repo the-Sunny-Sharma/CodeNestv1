@@ -102,6 +102,7 @@ export const addLecture = catchAsyncError(async (req, res, next) => {
       };
       console.log("Id", lectureDetails);
     } else if (type === "liveStream" || type === "oneOnOne") {
+      console.log(type);
       // If lecture type is liveStream or oneOnOne, you can add roomCode here
       // const { roomCode } = req.body;
       // if (!roomCode) {
@@ -114,9 +115,9 @@ export const addLecture = catchAsyncError(async (req, res, next) => {
       return next(new ErrorHandler(`Invalid lecture type: ${type}.`, 400));
     }
 
-    course.lectures.push(lectureDetails);
-    course.numOfVideos = course.lectures.length;
-    await course.save();
+    // course.lectures.push(lectureDetails);
+    // course.numOfVideos = course.lectures.length;
+    // await course.save();
 
     res.status(200).json({
       success: true,

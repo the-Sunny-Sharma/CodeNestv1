@@ -25,9 +25,11 @@ app.use(cookieParser());
 
 import course from "./routes/courseRoutes.js";
 import user from "./routes/userRoutes.js";
+import zego from "./routes/zegoRoutes.js";
 
 app.use("/api/v1/", course);
 app.use("/api/v1/", user);
+app.use("/api/v1/", zego);
 
 export default app;
 
