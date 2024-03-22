@@ -7,3 +7,16 @@
   width: 100%;
   height: 100vh;
 }
+
+.input-right {
+  width: 300px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+/* #title,
+#description {
+  color: #000;
+} */
