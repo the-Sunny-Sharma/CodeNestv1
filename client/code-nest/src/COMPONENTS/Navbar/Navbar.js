@@ -99,7 +99,7 @@ export default function Navbar() {
                 <Link to="#">My Learning</Link>
               </li>
               <li>
-                <Link to="#">PlayGround</Link>
+                <Link to="/home">PlayGround</Link>
               </li>
               <li>
                 <Link>

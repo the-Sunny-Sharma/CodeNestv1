@@ -33,6 +33,7 @@ export default function ForgotPassword() {
             <div className="form-group new-form-grp">
               <label className="form-label" htmlFor="email">
                 Email
+                
               </label>
               <SmallInput
                 ID="email"
