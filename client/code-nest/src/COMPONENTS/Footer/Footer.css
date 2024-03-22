@@ -1,0 +1,64 @@
+.foot-main{
+    background-color: #4361EE;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    padding-top: 20px;
+}
+.first-foot{
+    margin-left: 70px;
+}
+.first-foot-main{
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+}
+.first-foot-content{
+    line-height: 5px;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+.sec-foot{
+    margin-left: 100px;
+}
+.sec-foot-main{
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+.th-foot{
+    margin-left: 100px;
+}
+.th-foot-main{
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+.ft-foot{
+    margin-left: 100px;
+}
+.ft-foot-main{
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+.fi-foot{
+    margin-left: 100px;
+}
+.fi-foot-main{
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+.fi-foot-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fi-gh{
+    margin-left: 20px;
+}
+.fi-yt{
+    margin-left: 20px;
+}

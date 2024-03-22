@@ -11,6 +11,7 @@ import Register from "./Teacher/Register/Register";
 import CreateCourse from "./Teacher/Create Courses/CreateCourse";
 import CourseDetails from "./Teacher/Create Courses/CourseDetails";
 import CourseDetailsPage from "./Teacher/Create Courses/pages/CourseDetailsPage";
+import Codechat from "./Codechat/Codechat";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/myTeaching" element={<CreateCourse />} />
           <Route path="/myTeaching/createCourse" element={<CourseDetails />} />
           <Route path="/view-course/:id" element={<CourseDetailsPage />} />
+          <Route path="/codechat" element={<Codechat />} />
         </Routes>
       </BrowserRouter>
     </>
