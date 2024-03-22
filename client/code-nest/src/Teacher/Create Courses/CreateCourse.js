@@ -30,6 +30,24 @@ export default function CreateCourse() {
         Create New Course
       </button>
       <div>
+        <div id="output"></div>
+        <form method="get">
+          <select
+            data-placeholder="Choose tags ..."
+            name="tags[]"
+            multiple
+            class="chosen-select"
+          >
+            <option value="Engineering">Engineering</option>
+            <option value="Carpentry">Carpentry</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Electical">Electrical</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="HVAC">HVAC</option>
+          </select>
+        </form>
+      </div>
+      <div>
         <h2>Your Existing Courses</h2>
         <div className="course-container">
           {courses.map((course) => (
