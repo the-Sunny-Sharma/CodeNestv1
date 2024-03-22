@@ -22,6 +22,8 @@ import { AnimatePresence } from "framer-motion";
 import ShowNavbar from "./COMPONENTS/ShowNavbar/ShowNavbar";
 import Codechat from "./Codechat/Codechat";
 import ManageCourses from "./Teacher/Create Courses/pages/ManageCourses";
+import CourseList from "./Student/pages/CourseList";
+import CoursePage from "./Student/pages/CoursePage";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/all-courses" element={<CourseList />} />
+            <Route path="/course/:courseId" element={<CoursePage />} />
             {/* Teacher pages */}
             <Route path="/tutoring/register" element={<Register />} />
             <Route path="/myTeaching" element={<CreateCourse />} />

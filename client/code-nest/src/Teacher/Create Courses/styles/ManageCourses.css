@@ -16,7 +16,6 @@
   display: flex;
 }
 
-/* #title,
-#description {
-  color: #000;
-} */
+.text-b {
+  color: #000 !important;
+}

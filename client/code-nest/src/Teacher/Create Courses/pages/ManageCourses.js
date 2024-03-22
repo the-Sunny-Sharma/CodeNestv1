@@ -68,6 +68,7 @@ export default function ManageCourses() {
     console.log(formData);
 
     try {
+      console.log("request sent");
       const response = await axios.post(
         "http://localhost:4000/api/v1/createCourse",
         formData,
@@ -79,8 +80,10 @@ export default function ManageCourses() {
         }
       );
       console.log(response.data);
+      console.log("request received");
+
       // Optionally, redirect to another page after successful submission
-      navigate("/success");
+      // navigate("/success");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -91,10 +94,7 @@ export default function ManageCourses() {
       <div className="manage-courses">
         <h2>Manage Your Courses</h2>
         <div className="flex-container">
-          <button
-            className="cr-creator"
-            onClick={() => console.log("Button clicked")}
-          >
+          <button className="cr-creator" onClick={handleAddLecture}>
             <svg
               width="146px"
               height="146px"
@@ -140,7 +140,7 @@ export default function ManageCourses() {
             </svg>{" "}
           </button>
           <div className="input-right">
-            <form onSubmit={handleAddLecture}>
+            <form>
               <div className="form-group new-form-grp">
                 <label className="form-label" htmlFor="title">
                   Title
@@ -148,10 +148,9 @@ export default function ManageCourses() {
                 <SmallInput
                   ID="title"
                   Type="text"
-                  ClassName="full-length form-input"
+                  ClassName="full-length form-input text-b"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  style={{ color: "#000" }} // Set text color to black
                 />
               </div>
               <div className="form-group new-form-grp">
@@ -161,10 +160,9 @@ export default function ManageCourses() {
                 <SmallInput
                   ID="description"
                   Type="text"
-                  ClassName="full-length form-input"
+                  ClassName="full-length form-input text-b"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  style={{ color: "#000" }} // Set text color to black
                 />
               </div>
               <div className="form-group new-form-grp">
@@ -185,7 +183,6 @@ export default function ManageCourses() {
                 width="200px"
                 alt="No Preview Available"
               />
-              <button type="submit">Submit</button>
             </form>
           </div>
         </div>

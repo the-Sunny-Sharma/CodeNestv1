@@ -1,0 +1,23 @@
+.course-page {
+  margin: 20px;
+}
+
+.course-info {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.lecture-list {
+  margin-top: 20px;
+}
+
+.lecture {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+video {
+  width: 100%;
+}

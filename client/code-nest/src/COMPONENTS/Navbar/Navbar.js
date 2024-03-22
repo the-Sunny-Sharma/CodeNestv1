@@ -24,28 +24,22 @@ export default function Navbar() {
     fetchUserProfile();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchUserProfile = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:4000/api/v1/me", {
-  //         withCredentials: true, // Ensure cookies are sent with the request
-  //       });
-  //       // console.log(response.data.user);
-  //       setUserName(response.data.user.fName);
-  //       if (response.data.user.isTeacher === true) setIsTeacher(true);
-  //     } catch (error) {
-  //       console.log(`Error fetching user profile: ${error}`);
-  //     }
-  //   };
-
-  //   fetchUserProfile();
-  // }, [userName]);
-
   // method to jump to the desired element by using the element's id
   const jumpToRelevantDiv = (id) => {
-    const releventDiv = document.getElementById(id);
-    // behavior: "smooth" parameter for smooth movement
-    releventDiv.scrollIntoView({ behavior: "smooth" });
+    try {
+      const releventDiv = document.getElementById(id);
+      if (releventDiv) {
+        // behavior: "smooth" parameter for smooth movement
+        releventDiv.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error(`Element with id ${id} not found`);
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while jumping to the relevant div:",
+        error
+      );
+    }
   };
 
   return (
@@ -54,7 +48,7 @@ export default function Navbar() {
         <div className="navbar-logo">
           <Link
             className="logo"
-            to="/"
+            to={isTeacher ? "/h" : "/"}
             onClick={() => jumpToRelevantDiv("caurosel")}
           >
             CodeNest
@@ -97,7 +91,7 @@ export default function Navbar() {
           {userName ? (
             <>
               <li>
-                <Link to="#">Courses</Link>
+                <Link to="/all-courses">Courses</Link>
               </li>
               <li>
                 <Link to="/codechat">Ask AI</Link>
