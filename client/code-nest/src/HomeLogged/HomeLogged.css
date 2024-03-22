@@ -1,0 +1,269 @@
+.caurosel1 {
+    margin-left: 700px;
+    margin-top: 50px;
+  }
+  #caurosel {
+    background-color: #fff;
+    height: 700px;
+    z-index: -800;
+  }
+  .caurosel-btext {
+    font-size: 2.5rem;
+  }
+  
+  .slide-1-btext {
+    width: 620px;
+    height: auto;
+    margin-bottom: 40px;
+  }
+  
+  .caurosel-ptext {
+    font-size: 1.4rem;
+  }
+  
+  .slide-1-ptext {
+    width: 500px;
+  }
+  
+  .caurosel-text {
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 100px;
+  }
+  
+  .slide-2-btext {
+    position: absolute;
+    right: 0;
+    margin-right: 100px;
+    width: 900px;
+    text-align: right;
+    margin-top: 80px;
+  }
+  
+  .slide-2-ptext {
+    position: absolute;
+    right: 0;
+    margin-right: 100px;
+    width: 600px;
+    text-align: right;
+    margin-top: 250px;
+  }
+  
+  .slide-1-btn {
+    position: absolute;
+    background-color: #4361ee;
+    width: 450px;
+    height: 70px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 40px;
+    padding: 10px;
+    left: 0;
+    margin-top: 500px;
+    margin-left: 80px;
+  }
+  .slide-1-btn-new{
+    position: absolute;
+    background-color: #4361ee;
+    width: 450px;
+    height: 70px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 40px;
+    padding: 10px;
+    left: 0;
+    margin-top: 530px;
+    margin-left: 80px;
+  }
+  
+  .slide-2-btn-new {
+    position: absolute;
+    margin-top: 510px;
+    background-color: #4361ee;
+    width: 300px;
+    height: 70px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 40px;
+    padding: 10px;
+    margin-left: 250px;
+  }
+  
+  /* CSS for Courses section */
+  
+  #courses {
+    height: 1250px;
+    background-color: #eaf0ff;
+  }
+  
+  .courses-container {
+    /* margin-top: 80px; */
+    padding: 80px;
+  }
+  
+  .text-overflow-clamp {
+    width: 100%;
+    /* this code clamps based on specified lines */
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+  }
+  
+  .courses-row-1 {
+    padding: 50px;
+    background-color: #4361ee;
+    border-radius: 10px;
+  }
+  
+  .coursesmy-row {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    .cardmy {
+      flex: 0 0 auto;
+    }
+  }
+  
+  .scrolling-wrapper {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .coursesmy-2 {
+    margin-top: 80px;
+  }
+  
+  /* CSS for playground */
+  
+  .parallax-Video {
+    height: 400px;
+    padding: 50px 0px;
+  }
+  
+  .playground_vid {
+    width: 100%;
+    /* min-height: 100%; */
+    position: fixed;
+    top: 0;
+    z-index: -999;
+  }
+  
+  .para-text {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+    margin-top: 180px;
+  }
+  
+  /* css for about section */
+  
+  .about-container {
+    height: 1250px;
+    background-color: #fff;
+    margin-top: 250px;
+  }
+  
+  .about-codenest {
+    padding: 80px;
+    margin-top: 80px;
+  }
+  
+  .about-codenest h2 {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  .text-split-flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 50px;
+  }
+  
+  .left-content,
+  .right-content {
+    width: 500px;
+  }
+  
+  .team {
+    padding: 100px;
+    border-radius: 20px;
+    min-height: 150px;
+  }
+  
+  .team h3 {
+    text-align: center;
+    font-weight: 600px;
+    margin-bottom: 30px;
+  }
+  
+  .team-container {
+    display: flex;
+    background-color: #4361ee;
+    justify-content: space-evenly;
+    border-radius: 30px;
+  }
+  
+  .member {
+    padding: 50px;
+    color: #fff;
+  }
+  .member img {
+    /* object-fit: cover; */
+    border-radius: 50%;
+  }
+  
+  .member p {
+    text-align: center;
+  }
+  
+  .mem-name {
+    font-size: 1.5rem;
+    margin-top: 50px;
+  }
+.top-div-car2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-content-car2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.head-content-car2{
+    font-size: 50px;
+    width: 500px;
+    font-weight: 600;
+    /* margin-left: 200px; */
+    line-height: 60px;
+    margin-top: 50px;
+}
+.long-content-car2{
+    margin-top: 30px;
+    font-size: 20px;
+    width: 500px;
+    /* margin-left: 200px; */
+}
+.btn-car2{
+    padding: 10px;
+    color: white;
+    background-color:#4361ee;
+    border-radius: 40px;
+    border: none;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
