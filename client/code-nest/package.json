@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@coreui/coreui": "^4.3.2",
+=======
+    "@coreui/coreui": "^4.3.0",
+>>>>>>> 0dd78f7762ef78c85cc8af5cc0f735fc602c8616
     "@coreui/react": "^4.11.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
