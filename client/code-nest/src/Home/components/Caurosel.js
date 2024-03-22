@@ -4,8 +4,12 @@ import "@coreui/coreui/dist/css/coreui.min.css";
 import Image1 from "../../ASSETS/svgs/caurosel1.svg";
 import Image2 from "../../ASSETS/svgs/caurosel2.svg";
 import Image3 from "../../ASSETS/svgs/caurosel3.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Caurosel() {
+
+  const nav = useNavigate()
+
   return (
     <>
       <CCarousel controls indicators>
@@ -28,7 +32,7 @@ export default function Caurosel() {
               className="caurosel1"
               style={{ width: "auto", height: "550px" }}
             />
-            <button className="slide-1-btn">Start Learning Today</button>
+            <button className="slide-1-btn" onClick={() => nav('/signup')}>Start Learning Today</button>
           </div>
         </CCarouselItem>
         <CCarouselItem>
@@ -52,7 +56,7 @@ export default function Caurosel() {
               className="caurosel2"
               style={{ width: "auto", height: "400px" }}
             />
-            <button className="slide-2-btn">Join Us Now!</button>
+            <button className="slide-2-btn" onClick={() => {nav('/signup')}}>Join Us Now!</button>
           </div>
         </CCarouselItem>
         <CCarouselItem>
@@ -76,7 +80,7 @@ export default function Caurosel() {
               className="caurosel1"
               style={{ width: "auto", height: "520px" }}
             />
-            <button className="slide-1-btn">Get Started</button>
+            <button className="slide-1-btn" onClick={() =>{nav('/login')}}>Get Started</button>
           </div>
         </CCarouselItem>
       </CCarousel>
