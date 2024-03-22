@@ -4,6 +4,7 @@ import "./Home.css";
 import Courses from "./components/Courses";
 import PlaygroundVid from "./components/PlaygroundVid";
 import About from "./components/About";
+import Footer from "../COMPONENTS/Footer/Footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <About />
       </section>
       <section id="contact"></section>
+      <section id="footer"><Footer/></section>
     </>
   );
 }
