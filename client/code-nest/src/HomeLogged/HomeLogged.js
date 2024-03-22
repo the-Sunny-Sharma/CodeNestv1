@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Caurosel from "./Components/Caurosel";
 
 export default function HomeLogged() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function HomeLogged() {
 
   return (
     <>
-      <h1>Welcome</h1>
+      {/* <h1>Welcome</h1>
       {userInfo ? (
         <div>
           <p>
@@ -47,7 +48,8 @@ export default function HomeLogged() {
         </div>
       ) : (
         <p>Loading user profile...</p>
-      )}
+      )} */}
+      <Caurosel/>
     </>
   );
 }
