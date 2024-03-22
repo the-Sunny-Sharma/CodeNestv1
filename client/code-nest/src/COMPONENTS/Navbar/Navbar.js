@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import User from "../../ASSETS/svgs/user-logo.svg";
+import logout from "../../ASSETS/svgs/logout.svg";
 
 export default function Navbar() {
   const location = useLocation();
   const [userName, setUserName] = useState("");
   const [isTeacher, setIsTeacher] = useState(false);
+  const [show,setShow] = useState(false)
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -26,10 +29,24 @@ export default function Navbar() {
   }, []);
 
   // method to jump to the desired element by using the element's id
+  // const jumpToRelevantDiv = (id) => {
+  //   const releventDiv = document.getElementById(id);
+  //   // behavior: "smooth" parameter for smooth movement
+  //   releventDiv.scrollIntoView({ behavior: "smooth" });
+  // };
+
   const jumpToRelevantDiv = (id) => {
-    const releventDiv = document.getElementById(id);
-    // behavior: "smooth" parameter for smooth movement
-    releventDiv.scrollIntoView({ behavior: "smooth" });
+    try {
+      const releventDiv = document.getElementById(id);
+      if (releventDiv) {
+        // behavior: "smooth" parameter for smooth movement
+        releventDiv.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error(`Element with id ${id} not found`);
+      }
+    } catch (error) {
+      console.error("An error occurred while jumping to the relevant div:", error);
+    }
   };
 
   return (
@@ -130,6 +147,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="#">
+                  <div onClick={() => setShow(!show)}>
                   <svg
                     height="32"
                     weight="32"
@@ -222,8 +240,26 @@ export default function Navbar() {
                       />
                     </g>
                   </svg>
+                  </div>
                 </Link>
               </li>
+              {show? 
+              <div className="profile_dropdown">
+              <div className="profile_option">
+                <a href="#" className="profile-link">
+                  <img src={User} width={45} height={45}/>
+                  <p>Profile</p>
+                </a>
+                <hr/>
+                <a href="#" className="profile-link">
+                  <img src={logout} width={40} height={40}/>
+                  <p>Logout</p>
+                </a>
+              </div>
+              
+            </div>
+              :null}
+              
               {/* <li>
                 <span>Hello, {userName}</span>
               </li> */}
@@ -235,22 +271,22 @@ export default function Navbar() {
           ) : (
             <>
               <li>
-                <Link to="#" onClick={() => jumpToRelevantDiv("courses")}>
+                <Link to="/" onClick={() => jumpToRelevantDiv("courses")}>
                   Explore Courses
                 </Link>
               </li>
               <li>
-                <Link to="#" onClick={() => jumpToRelevantDiv("playground")}>
+                <Link to="/" onClick={() => jumpToRelevantDiv("playground")}>
                   PlayGround
                 </Link>
               </li>
               <li>
-                <Link to="#" onClick={() => jumpToRelevantDiv("about")}>
+                <Link to="/" onClick={() => jumpToRelevantDiv("about")}>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="#" onClick={() => jumpToRelevantDiv("contact")}>
+                <Link to="/" onClick={() => jumpToRelevantDiv("contact")}>
                   Contact Us
                 </Link>
               </li>
