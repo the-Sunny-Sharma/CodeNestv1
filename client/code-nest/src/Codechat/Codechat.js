@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import './Codechat.css';
 import {
   MainContainer,
   ChatContainer,
@@ -92,12 +93,13 @@ function Codechat() {
   }
 
   return (
-    <div className="Codechat">
-      <div style={{ position: "relative", height: "800px", width: "700px" }}>
+    <div className="Codechat" style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"30px",paddingBottom:"50px"} }>
+      <div style={{ position: "relative", height: "600px", width: "600px" }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
               scrollBehavior="smooth"
+              style={{marginTop:"10px"}}
               typingIndicator={
                 isTyping ? (
                   <TypingIndicator content="ChatGPT is typing" />
