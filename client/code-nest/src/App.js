@@ -33,9 +33,10 @@ function App() {
         <AnimatePresence>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/h" element={<HomeLogged />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/h" element={<HomeLogged />} />
+
             <Route path="/viewcourse/:courseId" element={<CourseDesc />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/all-courses" element={<CourseList />} />

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import User from "../../ASSETS/svgs/user-logo.svg";
 import logout from "../../ASSETS/svgs/logout.svg";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -20,6 +19,12 @@ export default function Navbar() {
     const fetchData = async () => {
       if (location.pathname === "/login" || location.pathname === "/signup") {
         return;
+      }
+      if (location.pathname === "/") {
+        const userInfoString = localStorage.getItem("user");
+        if (userInfoString) {
+          navigate("/h");
+        }
       }
       if (location.pathname !== "/") {
         const userInfoString = localStorage.getItem("user");
@@ -62,12 +67,14 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/v1/logout", {
+      await axios.get("http://localhost:4000/api/v1/logout", {
         withCredentials: true, // Ensure cookies are sent with the request
       });
-      console.log("user logged out", response.data);
+      localStorage.clear();
+      window.location.reload();
+      navigate("/");
     } catch (error) {
-      console.log(`Error fetching user profile: ${error}`);
+      toast.error("Error occured during logout!");
     }
   };
 
@@ -82,39 +89,6 @@ export default function Navbar() {
           >
             CodeNest
           </Link>
-          <div className="search-bar">
-            <button>
-              <svg
-                height="16"
-                width="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <path
-                    d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                    stroke="#ffffff"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>{" "}
-                </g>
-              </svg>
-            </button>
-            <input
-              className="search-input"
-              type="text"
-              placeholder="Search..."
-            />
-          </div>
         </div>
         <ul className="nav-a">
           {userName ? (
@@ -179,7 +153,6 @@ export default function Navbar() {
                   <div className="profile_option">
                     <Link className="profile-link">
                       <Avatar name={userName} round={true} size="32px" />
-
                       <p>Profile</p>
                     </Link>
                     <hr />
