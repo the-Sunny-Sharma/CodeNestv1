@@ -2,27 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Caurosel from "./Components/Caurosel";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function HomeLogged() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    const fetchUserProfile = async () => {
+    const userInfo = localStorage.getItem("user");
+    if (!userInfo) {
+      const url = "http://localhost:4000/api/v1/logout";
+      localStorage.clear();
       try {
-        const response = await axios.get("http://localhost:4000/api/v1/me", {
-          withCredentials: true, // Ensure cookies are sent with the request
+        const response = axios.get(url, {
+          withCredentials: true,
         });
-        setUserInfo(response.data.user);
-        console.log("USer date", response.data);
+        if (response.data.success === true) {
+          navigate("/");
+        }
       } catch (error) {
-        console.log(`Error fetching user profile: ${error}`);
-        navigate("/"); // Redirect to home page if user is not authenticated
+        toast.error("Something went wrong!");
       }
-    };
-
-    fetchUserProfile();
-  }, [navigate]);
+    }
+  });
 
   return (
     <>
@@ -39,6 +42,7 @@ export default function HomeLogged() {
         <p>Loading user profile...</p>
       )} */}
       <Caurosel />
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }
