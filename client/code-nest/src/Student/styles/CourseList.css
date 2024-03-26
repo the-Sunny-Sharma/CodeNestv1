@@ -33,3 +33,15 @@
 .course-card {
   cursor: pointer;
 }
+
+.course-override {
+  border: 1px solid grey;
+  width: 350px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.course-spinner {
+  width: 100%;
+  margin: auto;
+}
