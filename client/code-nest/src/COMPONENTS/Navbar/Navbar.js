@@ -7,6 +7,7 @@ import logout from "../../ASSETS/svgs/logout.svg";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Avatar from "react-avatar";
 
 export default function Navbar() {
   const location = useLocation();
@@ -21,7 +22,6 @@ export default function Navbar() {
         return;
       }
       if (location.pathname !== "/") {
-        console.log(location.pathname);
         const userInfoString = localStorage.getItem("user");
         if (!userInfoString) {
           localStorage.clear();
@@ -34,7 +34,7 @@ export default function Navbar() {
           }
         } else {
           const userInfo = JSON.parse(userInfoString);
-          setUserName(userInfo.fName);
+          setUserName(userInfo.fName + " " + userInfo.lName);
           setIsTeacher(userInfo.isTeacher);
         }
       }
@@ -170,100 +170,7 @@ export default function Navbar() {
               <li>
                 <Link to="#">
                   <div onClick={() => setShow(!show)}>
-                    <svg
-                      height="32"
-                      weight="32"
-                      xmlns="http://www.w3.org/2000/svg"
-                      id="Layer_1"
-                      fill="#000"
-                      data-name="Layer 1"
-                      viewBox="-36.63 -36.63 439.6 439.6"
-                    >
-                      <rect
-                        id="SVGRepo_bgCarrier"
-                        width={439.6}
-                        height={439.6}
-                        x={-36.63}
-                        y={-36.63}
-                        fill="#7ed0ec"
-                        strokeWidth={0}
-                        rx={219.8}
-                      />
-                      <g id="SVGRepo_iconCarrier">
-                        <defs>
-                          <linearGradient
-                            id="linear-gradient"
-                            x1={69.93}
-                            x2={296.41}
-                            y1={295.83}
-                            y2={295.83}
-                            gradientUnits="userSpaceOnUse"
-                          >
-                            <stop offset={0} stopColor="#16243f" />
-                            <stop offset={1} stopColor="#6878b1" />
-                          </linearGradient>
-                          <style>
-                            {
-                              ".cls-1{fill:#f2a196}.cls-2{fill:#e88870}.cls-6{fill:#00214e}.cls-7{fill:none;stroke:#00214e;stroke-miterlimit:10}"
-                            }
-                          </style>
-                        </defs>
-                        <title>
-                          {"Artboards_Diversity_Avatars_by_Netguru"}
-                        </title>
-                        <path
-                          d="M296.41 291.18a184.56 184.56 0 0 1-226.48-1l48.66-22.81a46.83 46.83 0 0 0 6.65-3.82c.64-.44 1.28-.9 1.89-1.38a46.35 46.35 0 0 0 12.78-15.09 44.69 44.69 0 0 0 4.64-14.48 67.91 67.91 0 0 0 .74-9.91c0-3.46-.09-6.92-.21-10.38-.07-2.26-.13-4.53-.16-6.79q-.06-4.75-.1-9.51l2 1 5.2 2.69 2.41.41 27.88 4.74 31.12 5.3.94 32 .31 10.46.15 5.08v.31l1 .42 11.07 4.5Z"
-                          className="cls-1"
-                        />
-                        <path
-                          d="M214.82 258a16 16 0 0 1-10.07-1.56l-59.67-48.77c-.07-2.26-.13.1-.16-2.16q-.06-4.75-.1-9.51l2 1 5.2 2.69 2.41.41 27.88 4.74 31.12 5.3.94 32 .31 10.46.15 5.08v.32Z"
-                          className="cls-2"
-                        />
-                        <path
-                          d="M296.41 291.18a184.56 184.56 0 0 1-226.48-1l48.66-22.81a46.83 46.83 0 0 0 6.65-3.82c.64-.44 1.28-.9 1.89-1.38 23.55 16.76 55.69 27.33 83.49 14.82 6.62-3 12.7-7.84 16.3-14.06Z"
-                          style={{
-                            fill: "url(#linear-gradient)",
-                          }}
-                        />
-                        <path
-                          d="M278.51 90.9c-.09.59-.2 1.17-.33 1.75a32.08 32.08 0 0 1-3.31 8.49l-.08.14c-.57 1-1.18 2-1.84 3a74.32 74.32 0 0 1-5.72 7.35L266 113c-.83.93-1.67 1.84-2.51 2.74 4.45-1 8.76 3.15 9.55 7.63s-1 9-3.21 13c-3.87 7.08-9.45 11.79-14.36 17.94-3.68 4.58-5.72 10-9.73 14.38l-.3.33c-10.59 11.12-27.31 13.72-41.23 18.47-5 1.72-59.22 17.12-59.22 20.48 0-.73-5.31-6-12-12.41-24-22.79-31.89-58-17.61-88.2 15.35-32.5 50.21-55.69 83.41-66.83 10.38-3.48 22.16-5.82 32-1s14.74 19.77 6.58 27.07a26.16 26.16 0 0 1 17.93-5.21 24.46 24.46 0 0 1 15.72 7.07 27 27 0 0 1 6.95 12.08 24.94 24.94 0 0 1 .54 10.36Z"
-                          style={{
-                            fill: "#845161",
-                          }}
-                        />
-                        <path
-                          d="M278.51 90.9c-.09.59-.2 1.17-.33 1.75-.09.17-.18.35-.27.55-1.13 2.58-1.65 5.36-3 7.94l-.08.14c-.57 1-1.18 2-1.84 3a67.09 67.09 0 0 1-5.72 7.35L266 113c-.83.93-1.67 1.84-2.51 2.74 4.45-1 8.76 3.15 9.55 7.63s-1 9-3.21 13c-3.87 7.08-9.45 11.79-14.36 17.94-3.68 4.58-5.72 10-9.73 14.38a37.7 37.7 0 0 1-8.54-19.47c-1.64-13.26-.64-27.71-1.09-41.13-.28-8.44-3-10 2.06-16.83a74.3 74.3 0 0 1 14-13.29c4.08-2.69 9.33-3.11 14.2-2.42a23.5 23.5 0 0 1 11.58 5 24.94 24.94 0 0 1 .56 10.35Z"
-                          style={{
-                            fill: "#69303a",
-                          }}
-                        />
-                        <circle cx={134.98} cy={168} r={17} className="cls-1" />
-                        <circle
-                          cx={140.37}
-                          cy={168}
-                          r={15.22}
-                          className="cls-2"
-                        />
-                        <path
-                          d="m140.6 152 4.4 57 66.44 38.82A19.77 19.77 0 0 0 236.1 238c9.56-19.58 24.9-50.5 22.88-62-3-17-11-23-11-23q1.67-10 3.32-19.94c1.26-7.51 2.87-15.35 1-22.9-2.13-8.66-8.67-12.35-14.05-18.82-14.16 18.24-37.44 28.55-57.77 39C170 135.78 140.6 152 140.6 152Z"
-                          className="cls-1"
-                        />
-                        <path
-                          d="M189.72 149.8c6.1 0 6.1 9.38 0 9.43h-.28c-6.1 0-6.1-9.38 0-9.43h.28ZM239.84 148.41c5.67.05 5.67 8.7 0 8.75h-.25c-5.66 0-5.66-8.7 0-8.75h.25Z"
-                          className="cls-6"
-                        />
-                        <path
-                          d="M215.13 147.09c-.08.35 13.36 36.13 13.36 36.13l-17.94.87M172.65 140.17a80.57 80.57 0 0 1 28.13-.79M231.7 140.28a55.34 55.34 0 0 1 17.45-1.21"
-                          className="cls-7"
-                        />
-                        <path
-                          d="M192.17 194.1a1.85 1.85 0 0 1 2.68-.5c2.08 1.46 5.88 4.56 11.28 5.63 7.36 1.47 13.74-1.48 15.27.42.86 1.07-.19 2.37-2.2 4a19.74 19.74 0 0 1-14.86 3.69c-7.08-1.33-12.4-9.53-12.4-12.44a1.66 1.66 0 0 1 .23-.8Z"
-                          style={{
-                            fill: "#fff",
-                          }}
-                        />
-                      </g>
-                    </svg>
+                    <Avatar name={userName} round={true} size="32px" />
                   </div>
                 </Link>
               </li>
@@ -271,7 +178,8 @@ export default function Navbar() {
                 <div className="profile_dropdown">
                   <div className="profile_option">
                     <Link className="profile-link">
-                      <img src={User} width={45} height={45} alt="user" />
+                      <Avatar name={userName} round={true} size="32px" />
+
                       <p>Profile</p>
                     </Link>
                     <hr />
@@ -282,14 +190,6 @@ export default function Navbar() {
                   </div>
                 </div>
               ) : null}
-
-              {/* <li>
-                <span>Hello, {userName}</span>
-              </li> */}
-
-              {/* <li>
-                <button>Logout</button>
-              </li> */}
             </>
           ) : (
             <>
