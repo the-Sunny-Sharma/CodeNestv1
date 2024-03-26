@@ -4,6 +4,8 @@ import "./Login.css";
 import SmallInput from "./components/SmallInput";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -48,26 +50,33 @@ export default function Login() {
     };
     let url = "http://localhost:4000/api/v1/login";
     try {
-      // const response = await axios.post(url, loginCredentials);
       const response = await axios.post(url, loginCredentials, {
         withCredentials: true, // Include credentials (cookies) in the request
       });
       if (response.data.success === true) {
-        console.log("Login data: ", response);
-        const email = response.data.user.email;
-        localStorage.setItem("email", email);
-        navigate("/h", { replace: true });
-        // navigate("/h");
+        const { fName, lName, email, role, isTeacher } = response.data.user;
+        const userInfo = {
+          fName,
+          lName,
+          email,
+          role,
+          isTeacher,
+        };
+        localStorage.setItem("user", JSON.stringify(userInfo));
+        toast.success(`Welcome back, ${response.data.user.fName}!`);
+        setTimeout(() => {
+          navigate("/h", { replace: true });
+        }, 3000);
         return;
       } else {
-        alert("Invalid Email or Password");
+        toast.error("Invalid Email or Password");
         return;
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        alert("Invalid Email or Password");
+        toast.error("Invalid Email or Password");
       } else {
-        alert("Server not responding");
+        toast.error("Network error occurred. Please try again later.");
       }
       return;
     }
@@ -122,6 +131,7 @@ export default function Login() {
           Forgot Password
         </p>
       </div>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }
