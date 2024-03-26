@@ -4,12 +4,44 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import User from "../../ASSETS/svgs/user-logo.svg";
 import logout from "../../ASSETS/svgs/logout.svg";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Navbar() {
   const location = useLocation();
   const [userName, setUserName] = useState("");
   const [isTeacher, setIsTeacher] = useState(false);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (location.pathname === "/login" || location.pathname === "/signup") {
+        return;
+      }
+      if (location.pathname !== "/") {
+        console.log(location.pathname);
+        const userInfoString = localStorage.getItem("user");
+        if (!userInfoString) {
+          localStorage.clear();
+          const url = "http://localhost:4000/api/v1/logout";
+          try {
+            await axios.get(url, { withCredentials: true });
+            navigate("/");
+          } catch (error) {
+            toast.error("Error logging out:", error);
+          }
+        } else {
+          const userInfo = JSON.parse(userInfoString);
+          setUserName(userInfo.fName);
+          setIsTeacher(userInfo.isTeacher);
+        }
+      }
+    };
+
+    fetchData();
+  }, [location]);
 
   const jumpToRelevantDiv = (id) => {
     try {
@@ -300,6 +332,7 @@ export default function Navbar() {
           )}
         </ul>
       </nav>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }
