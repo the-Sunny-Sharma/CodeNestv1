@@ -32,7 +32,7 @@ export default function CoursePage() {
 
   const handleJoin = async (roomCode) => {
     let role = "Audience";
-    navigate(`/unity/${roomCode}/${role}`);
+    navigate(`/student/${roomCode}/${role}`);
   };
 
   return (

@@ -20,7 +20,7 @@ router
 
 router
   .route("/view-course/:id")
-  .get(isAuthenticated, viewCourse)
+  .get(viewCourse)
   .post(isAuthenticated, authorizeTeacher, singleUpload, addLecture);
 // .post(isAuthenticated, authorizeTeacher, addLecture);
 

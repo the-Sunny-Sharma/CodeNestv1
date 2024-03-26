@@ -4,6 +4,8 @@ import SmallInput from "./components/SmallInput";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ export default function SignUp() {
   }, []); // empty dependency array ensures this runs only once after mount
 
   const rPassword = useRef();
+  const rEmail = useRef();
 
   const [fName, setFirstName] = useState("");
   const [lName, setLastName] = useState("");
@@ -81,10 +84,9 @@ export default function SignUp() {
         password,
       };
       let url = "http://localhost:4000/api/v1/signup";
-      await axios
-        .post(url, userData)
-        .then((res) => {
-          console.log(res);
+      try {
+        const response = await axios.post(url, userData);
+        if (response) {
           setFirstName("");
           setLastName("");
           setDOB("");
@@ -92,9 +94,25 @@ export default function SignUp() {
           setPhone("");
           setPassword("");
           setPassword1("");
-          navigate("/login", { replace: true });
-        })
-        .catch((err) => console.log("Issue during Sign Up: " + err));
+          toast.success("User registered successfully!");
+          setTimeout(() => {
+            navigate("/login", { replace: true });
+          }, 3000); // Wait for 3 seconds before navigating
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 409) {
+          toast.error("Email already in use!");
+          setEmail("");
+          rEmail.current.focus();
+          return;
+        } else if (error.response) {
+          // Handle other server errors with status codes
+          toast.error("An error occurred. Please try again later.");
+        } else {
+          // Handle network errors or other unexpected errors
+          toast.error("Network error occurred. Please try again later.");
+        }
+      }
     } else {
       alert("\u24D8 Password did not match");
       setPassword1("");
@@ -168,12 +186,13 @@ export default function SignUp() {
               <label className="form-label" htmlFor="email">
                 Email
               </label>
-              <SmallInput
-                ID="email"
-                Type="email"
-                ClassName="full-length form-input"
-                Value={email}
-                OnChange={hEmail}
+              <input
+                id="email"
+                type="email"
+                className="full-length form-input"
+                value={email}
+                onChange={hEmail}
+                ref={rEmail}
               />
             </div>
             <div className="form-group">
@@ -212,6 +231,7 @@ export default function SignUp() {
           <span onClick={() => redirect("/login")}>Login</span>
         </p>
       </div>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }
