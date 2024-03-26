@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // importing pages
 import SignUp from "./SignUp/SignUp";
 import Login from "./Login/Login";
@@ -8,9 +8,6 @@ import Home from "./Home/Home";
 import ForgotPassword from "./Login/ForgotPassword";
 import HomeLogged from "./HomeLogged/HomeLogged";
 import Register from "./Teacher/Register/Register";
-import CreateCourse from "./Teacher/Create Courses/CreateCourse";
-import CourseDetails from "./Teacher/Create Courses/CourseDetails";
-// import CourseDetailsPage from "./Teacher/Create Courses/pages/CourseDetailsPage";
 // ---------------GAME--------------------
 import HomePage from "./GAME/pages/HomePage/HomePage";
 import Course from "./GAME/pages/Course/Course";
@@ -21,9 +18,10 @@ import Game from "./GAME/pages/Game/Game";
 import { AnimatePresence } from "framer-motion";
 import ShowNavbar from "./COMPONENTS/ShowNavbar/ShowNavbar";
 import Codechat from "./Codechat/Codechat";
-import ManageCourses from "./Teacher/Create Courses/pages/ManageCourses";
 import CourseList from "./Student/pages/CourseList";
 import CoursePage from "./Student/pages/CoursePage";
+import StudentScreen from "./Unity/StudentView/StudentScreen";
+import CourseDesc from "./COMPONENTS/CoursePage/CourseDesc";
 
 function App() {
   return (
@@ -38,19 +36,19 @@ function App() {
             <Route path="/h" element={<HomeLogged />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/viewcourse/:courseId" element={<CourseDesc />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/all-courses" element={<CourseList />} />
             <Route path="/course/:courseId" element={<CoursePage />} />
+            <Route
+              path="/student/:roomCode/:role"
+              element={<StudentScreen />}
+            />
             {/* Teacher pages */}
             <Route path="/tutoring/register" element={<Register />} />
-            <Route path="/myTeaching" element={<CreateCourse />} />
-            <Route
-              path="/myTeaching/createCourse"
-              element={<CourseDetails />}
-            />
+
             {/* <Route path="/view-course/:id" element={<CourseDetailsPage />} /> */}
             <Route path="/codechat" element={<Codechat />} />
-            <Route path="/teacher/manage-courses" element={<ManageCourses />} />
 
             {/* -------------------Game---------------------- */}
             <Route path="/home" element={<HomePage />} />

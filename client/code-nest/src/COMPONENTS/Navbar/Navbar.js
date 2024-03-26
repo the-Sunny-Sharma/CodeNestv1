@@ -11,29 +11,6 @@ export default function Navbar() {
   const [isTeacher, setIsTeacher] = useState(false);
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/api/v1/me", {
-          withCredentials: true,
-        });
-        setUserName(response.data.user.fName);
-        console.log("Updated userName:", response.data.user.fName); // Log the updated userName
-        if (response.data.user.isTeacher === true) setIsTeacher(true);
-      } catch (error) {
-        console.log(`Error fetching user profile: ${error}`);
-      }
-    };
-    fetchUserProfile();
-  }, []);
-
-  // method to jump to the desired element by using the element's id
-  // const jumpToRelevantDiv = (id) => {
-  //   const releventDiv = document.getElementById(id);
-  //   // behavior: "smooth" parameter for smooth movement
-  //   releventDiv.scrollIntoView({ behavior: "smooth" });
-  // };
-
   const jumpToRelevantDiv = (id) => {
     try {
       const releventDiv = document.getElementById(id);

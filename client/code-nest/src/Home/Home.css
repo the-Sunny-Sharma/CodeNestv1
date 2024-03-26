@@ -89,7 +89,8 @@
 /* CSS for Courses section */
 
 #courses {
-  height: 1250px;
+  /* height: 1250px; */
+  height: auto;
   background-color: #eaf0ff;
 }
 
